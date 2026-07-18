@@ -64,8 +64,8 @@ jobs:
         uses: actions/cache@v4
         id: ndk-cache
         with:
-          path: build/android-ndk-r25c
-          key: ndk-r25c-linux
+          path: build/android-ndk-r29
+          key: ndk-r29-linux
 
       - name: Download NDK
         if: steps.ndk-cache.outputs.cache-hit != 'true'
@@ -106,7 +106,7 @@ jobs:
           CMD="python3 build.py --version ${{ inputs.frida_version }}"
           CMD="$CMD --name ${{ inputs.custom_name }}"
           CMD="$CMD --arch ${{ inputs.arch }}"
-          CMD="$CMD --skip-clone --ndk-path build/android-ndk-r25c"
+          CMD="$CMD --skip-clone --ndk-path build/android-ndk-r29"
           CMD="$CMD --verify"
 
           if [ -n "${{ inputs.port }}" ]; then
